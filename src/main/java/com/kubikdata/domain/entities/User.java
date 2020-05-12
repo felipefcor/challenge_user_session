@@ -6,13 +6,13 @@ import com.kubikdata.domain.valueObjects.Username;
 
 import java.time.LocalDate;
 
-public class UserSession {
+public class User {
     private final UserId userID;
     private final Username username;
     private final UserToken token;
     private final LocalDate date;
 
-    public UserSession(UserId userID, Username username, UserToken token, LocalDate date) {
+    public User(UserId userID, Username username, UserToken token, LocalDate date) {
         this.userID = userID;
         this.username = username;
         this.token = token;
