@@ -1,4 +1,4 @@
-package domain;
+package com.kubikdata.domain.valueObjects;
 
 public class UserToken {
     private String token;

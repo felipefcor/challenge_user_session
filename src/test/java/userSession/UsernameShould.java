@@ -1,5 +1,7 @@
-import domain.Username;
-import domain.UsernameNotValidException;
+package userSession;
+
+import com.kubikdata.domain.valueObjects.Username;
+import com.kubikdata.domain.valueObjects.UsernameNotValidException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
