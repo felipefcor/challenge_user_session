@@ -10,5 +10,8 @@ public class UsernameShould {
         Assertions.assertThrows(UsernameNotValidException.class, () -> new  Username("usuario muy largo y no valido"));
     }
 
-
+    @Test
+    public void throw_an_exception_when_the_username_has_not_allowed_characters() {
+        Assertions.assertThrows(UsernameNotValidException.class, () -> new  Username("usuari&&"));
+    }
 }
