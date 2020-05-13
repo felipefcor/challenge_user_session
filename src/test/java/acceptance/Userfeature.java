@@ -15,10 +15,10 @@ public class Userfeature {
     public void create_a_user_with_a_token_and_return_a_user_response(){
         MockitoAnnotations.initMocks(this);
         Username username = new Username("myUsername");
-        UserService user = new UserService(inMemoryUserRepository);
-        UserToken userToken = user.createSession(username);
+        UserService userService = new UserService(inMemoryUserRepository);
+        UserToken userToken = userService.createSession(username);
 
-        Assert.assertEquals("myUsername", user.get(username).getUsername());
-        Assert.assertEquals(userToken.toString(), user.get(username).getToken());
+        Assert.assertEquals("myUsername", userService.get(username, userToken).getUsername());
+        Assert.assertEquals(userToken.toString(), userService.get(username, userToken).getToken());
     }
 }

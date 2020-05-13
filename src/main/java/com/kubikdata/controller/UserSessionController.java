@@ -5,6 +5,7 @@ import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
+import com.kubikdata.infrastructure.UserRepositoryInterface;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,15 @@ public class UserSessionController {
             httpHeaders.add("Authorization", token);
             return new ResponseEntity<>("user token created succesfully", httpHeaders, HttpStatus.CREATED);
 
+        } catch (RuntimeException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
+        }
+    }
+    @GetMapping(value = "/info/{username}/{token}")
+    public ResponseEntity<Object> userInfoGet(@PathVariable String username, @PathVariable String token) {
+        UserService userService = new UserService(inMemoryUserRepository);
+        try {
+            return new ResponseEntity<>(userService.get(new Username(username),new UserToken(token)), HttpStatus.OK);
         } catch (RuntimeException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
         }

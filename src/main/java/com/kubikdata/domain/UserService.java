@@ -4,16 +4,17 @@ import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
+import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.infrastructure.UserRepositoryInterface;
 
 import java.time.LocalDate;
 
 public class UserService {
 
-    private final UserRepositoryInterface userRepository;
+    private final InMemoryUserRepository inMemoryUserRepository;
 
-    public UserService(UserRepositoryInterface userRepository) {
-        this.userRepository = userRepository;
+    public UserService(InMemoryUserRepository inMemoryUserRepository) {
+        this.inMemoryUserRepository = inMemoryUserRepository;
     }
 
     public UserToken createSession(Username username) {
@@ -21,13 +22,15 @@ public class UserService {
         UserToken userToken = userSecurity.createJWTToken(username);
         UserId userId = new UserId(1);
         User user = new User(userId, username, userToken, LocalDate.now());
-        userRepository.add(username, user);
+        inMemoryUserRepository.add(username, user);
         return userToken;
     }
 
-    public UserResponse get(Username username) {
-        UserResponse user = userRepository.get(username);
-        if (user != null) return user;
+    public UserResponse get(Username username, UserToken userToken) {
+        UserResponse user = inMemoryUserRepository.get(username);
+        if (user != null && user.getToken().equals(userToken.toString())) {
+            return user;
+        }
         return null;
     }
 }

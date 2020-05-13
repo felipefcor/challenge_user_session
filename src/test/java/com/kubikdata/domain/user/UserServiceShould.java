@@ -1,5 +1,6 @@
 package com.kubikdata.domain.user;
 
+import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.infrastructure.UserRepositoryInterface;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.UserService;
@@ -18,7 +19,7 @@ import static org.mockito.Mockito.verify;
 
 public class UserServiceShould {
    @Mock
-   UserRepositoryInterface userRepository;
+   InMemoryUserRepository userRepository;
 
    @Test
    public void send_user_with_token_to_repository(){
