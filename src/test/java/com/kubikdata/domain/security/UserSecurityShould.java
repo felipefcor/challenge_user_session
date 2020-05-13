@@ -1,4 +1,4 @@
-package security;
+package com.kubikdata.domain.security;
 
 import com.kubikdata.domain.UserSecurity;
 import com.kubikdata.domain.valueObjects.UserToken;

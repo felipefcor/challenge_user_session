@@ -1,6 +1,6 @@
 package acceptance;
 
-import com.kubikdata.domain.InMemoryUserRepository;
+import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;

@@ -1,6 +1,6 @@
-package user;
+package com.kubikdata.domain.user;
 
-import com.kubikdata.domain.UserRepositoryInterface;
+import com.kubikdata.infrastructure.UserRepositoryInterface;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserId;

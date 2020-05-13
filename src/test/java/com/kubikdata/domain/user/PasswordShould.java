@@ -1,4 +1,4 @@
-package user;
+package com.kubikdata.domain.user;
 
 import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.domain.valueObjects.PasswordNotValidException;

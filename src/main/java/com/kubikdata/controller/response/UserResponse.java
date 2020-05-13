@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * This object will encapsulate required fields to know user , token and date.
+ * This object will encapsulate required fields to know com.kubikdata.domain.user , token and date.
  */
 public class UserResponse {
 
