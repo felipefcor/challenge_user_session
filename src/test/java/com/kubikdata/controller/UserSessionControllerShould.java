@@ -1,22 +1,14 @@
 package com.kubikdata.controller;
 
 import com.kubikdata.controller.request.UserSessionRequest;
-import com.kubikdata.controller.response.UserResponse;
-import com.kubikdata.domain.valueObjects.UserToken;
-import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.time.LocalDate;
-
-import static org.mockito.Mockito.when;
 
 public class UserSessionControllerShould {
     @Mock
