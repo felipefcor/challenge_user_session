@@ -17,12 +17,11 @@ public class InMemoryUserRepositoryShould {
     public void add_and_get_users_to_catalog(){
         InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
         Username username = new Username("myUsername");
-        UserId userId = new UserId(1);
-        User userTest = new User(userId, username, new UserToken("usertoken"), LocalDate.now());
+        User userTest = new User(new UserId(1), username, new UserToken("usertoken"), LocalDate.now());
         UserResponse userResponse = userTest.createUserResponse();
 
-        inMemoryUserRepository.add(userId, userTest);
+        inMemoryUserRepository.add(username, userTest);
 
-        Assert.assertEquals(userResponse, inMemoryUserRepository.get(userId));
+        Assert.assertEquals(userResponse, inMemoryUserRepository.get(username));
     }
 }

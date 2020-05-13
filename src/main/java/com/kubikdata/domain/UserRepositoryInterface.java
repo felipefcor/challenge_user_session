@@ -1,9 +1,9 @@
 package com.kubikdata.domain;
 
 import com.kubikdata.controller.response.UserResponse;
-import com.kubikdata.domain.valueObjects.UserId;
+import com.kubikdata.domain.valueObjects.Username;
 
 public interface UserRepositoryInterface {
-    void add(UserId userId, User user);
-    UserResponse get(UserId userId);
+    void add(Username username, User user);
+    UserResponse get(Username username);
 }
