@@ -5,6 +5,7 @@ import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -23,9 +24,12 @@ public class UserControllerShould {
     @InjectMocks
     private UserSessionController userSessionController;
 
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void create_user_session_token(){
-        MockitoAnnotations.initMocks(this);
         UserSessionRequest userSessionRequest = new UserSessionRequest();
         userSessionRequest.setUsername("username");
 
@@ -37,7 +41,6 @@ public class UserControllerShould {
 
     @Test
     public void get_user_response_from_username(){
-        MockitoAnnotations.initMocks(this);
         when(inMemoryUserRepository.get(new Username("username"))).thenReturn(new UserResponse("username","token", LocalDate.now()));
 
         ResponseEntity<Object> user = userSessionController.userInfoGet("username", "token");
@@ -48,7 +51,6 @@ public class UserControllerShould {
 
     @Test
     public void throw_an_error_if_username_is_not_valid() {
-        MockitoAnnotations.initMocks(this);
         UserSessionRequest userSessionRequest = new UserSessionRequest();
         userSessionRequest.setUsername("username&&");
 
