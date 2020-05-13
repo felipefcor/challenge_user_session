@@ -1,5 +1,6 @@
 package com.kubikdata.domain.entities;
 
+import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,7 +13,7 @@ public class UserSecurity {
 
     Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public String createJWTToken(Username username) {
+    public UserToken createJWTToken(Username username) {
          String token = Jwts
                 .builder()
                 .setSubject(username.getUsername())
@@ -21,11 +22,12 @@ public class UserSecurity {
                 .signWith(key)
                 .compact();
 
-        return token;
+        return new UserToken(token);
     }
 
     public Key getKey(){
         return key;
     }
+
 
 }

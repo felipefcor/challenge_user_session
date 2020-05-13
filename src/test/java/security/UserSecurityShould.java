@@ -1,6 +1,7 @@
 package security;
 
 import com.kubikdata.domain.entities.UserSecurity;
+import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,9 +14,10 @@ public class UserSecurityShould {
     public void create_correctly_a_user_token(){
         UserSecurity userSecurity = new UserSecurity();
         Username username = new Username("username");
-        String userToken = userSecurity.createJWTToken(username);
+        UserToken userToken = userSecurity.createJWTToken(username);
+        String token = userToken.toString();
 
-        String jwts = Jwts.parserBuilder().setSigningKey(userSecurity.getKey()).build().parseClaimsJws(userToken).getBody().getSubject();
+        String jwts = Jwts.parserBuilder().setSigningKey(userSecurity.getKey()).build().parseClaimsJws(token).getBody().getSubject();
 
         Assert.assertEquals("username", jwts);
 
