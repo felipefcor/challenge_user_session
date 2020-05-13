@@ -45,4 +45,16 @@ public class UserControllerShould {
         Assert.assertNotNull(user);
         Assert.assertEquals(HttpStatus.OK, user.getStatusCode());
     }
+
+    @Test
+    public void throw_an_error_if_username_is_not_valid() {
+        MockitoAnnotations.initMocks(this);
+        UserSessionRequest userSessionRequest = new UserSessionRequest();
+        userSessionRequest.setUsername("username&&");
+
+        ResponseEntity<Object> response = userSessionController.addSession(userSessionRequest);
+
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        Assert.assertEquals("username not valid", response.getBody());
+    }
 }
