@@ -1,6 +1,7 @@
 package user;
 
-import com.kubikdata.domain.UserRepository;
+import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.domain.InMemoryUserRepository;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -10,17 +11,18 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 
-public class UserRepositoryShould {
+public class InMemoryUserRepositoryShould {
 
     @Test
     public void add_and_get_users_to_catalog(){
-        UserRepository userRepository = new UserRepository();
+        InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
         Username username = new Username("myUsername");
         UserId userId = new UserId(1);
         User userTest = new User(userId, username, new UserToken("usertoken"), LocalDate.now());
+        UserResponse userResponse = userTest.createUserResponse();
 
-        userRepository.add(userId, userTest);
+        inMemoryUserRepository.add(userId, userTest);
 
-        Assert.assertEquals(userTest, userRepository.get(userId));
+        Assert.assertEquals(userResponse, inMemoryUserRepository.get(userId));
     }
 }

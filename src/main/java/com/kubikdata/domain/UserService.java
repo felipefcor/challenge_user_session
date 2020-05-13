@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 public class UserService {
 
-    private IUserRepository userRepository;
+    private UserRepositoryInterface userRepository;
 
-    public UserService(IUserRepository userRepository) {
+    public UserService(UserRepositoryInterface userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -3,7 +3,7 @@ package com.kubikdata.domain;
 import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.valueObjects.UserId;
 
-public interface IUserRepository {
+public interface UserRepositoryInterface {
     void add(UserId userId, User user);
     UserResponse get(UserId userId);
 }

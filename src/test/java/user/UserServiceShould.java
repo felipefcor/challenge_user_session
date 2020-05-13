@@ -1,6 +1,6 @@
 package user;
 
-import com.kubikdata.domain.IUserRepository;
+import com.kubikdata.domain.UserRepositoryInterface;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserId;
@@ -17,7 +17,8 @@ import static org.mockito.Mockito.verify;
 
 
 public class UserServiceShould {
-   @Mock IUserRepository userRepository;
+   @Mock
+   UserRepositoryInterface userRepository;
 
    @Test
    public void send_user_with_token_to_repository(){

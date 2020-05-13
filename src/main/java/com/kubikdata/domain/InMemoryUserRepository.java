@@ -5,7 +5,7 @@ import com.kubikdata.domain.valueObjects.UserId;
 
 import java.util.HashMap;
 
-public class UserRepository implements IUserRepository{
+public class InMemoryUserRepository implements UserRepositoryInterface {
 
     private HashMap<UserId, User> userCatalog = new HashMap<>();
 
