@@ -1,6 +1,5 @@
 package user;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.UserRepositoryInterface;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.UserService;
@@ -8,7 +7,6 @@ import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;

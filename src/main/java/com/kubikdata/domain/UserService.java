@@ -6,7 +6,6 @@ import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class UserService {
 

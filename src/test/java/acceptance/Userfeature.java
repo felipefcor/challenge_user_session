@@ -1,11 +1,9 @@
 package acceptance;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.InMemoryUserRepository;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
-import io.swagger.models.auth.In;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
