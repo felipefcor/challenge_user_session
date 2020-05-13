@@ -2,10 +2,7 @@ package com.kubikdata.controller;
 
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.domain.UserService;
-import com.kubikdata.domain.valueObjects.Password;
-import com.kubikdata.domain.valueObjects.UserToken;
-import com.kubikdata.domain.valueObjects.Username;
-import com.kubikdata.domain.valueObjects.UsernameNotValidException;
+import com.kubikdata.domain.valueObjects.*;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,6 +33,8 @@ public class UserSessionController {
 
             return new ResponseEntity<>("user token created succesfully", httpHeaders, HttpStatus.CREATED);
         } catch (UsernameNotValidException exception) {
+            return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (PasswordNotValidException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (RuntimeException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);

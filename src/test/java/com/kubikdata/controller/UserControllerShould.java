@@ -74,4 +74,16 @@ public class UserControllerShould {
         Assert.assertEquals(HttpStatus.SERVICE_UNAVAILABLE, user.getStatusCode());
     }
 
+    @Test
+    public void throw_an_error_if_password_is_not_valid() {
+        UserSessionRequest userSessionRequest = new UserSessionRequest();
+        userSessionRequest.setUsername("username");
+        userSessionRequest.setPassword("user");
+
+        ResponseEntity<Object> response = userSessionController.addSession(userSessionRequest);
+
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        Assert.assertEquals("password not valid", response.getBody());
+    }
+
 }
