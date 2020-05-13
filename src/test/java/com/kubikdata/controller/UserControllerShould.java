@@ -2,9 +2,6 @@ package com.kubikdata.controller;
 
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.controller.response.UserResponse;
-import com.kubikdata.domain.User;
-import com.kubikdata.domain.valueObjects.UserId;
-import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import org.junit.Assert;
