@@ -59,4 +59,13 @@ public class UserControllerShould {
         Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         Assert.assertEquals("username not valid", response.getBody());
     }
+
+    @Test
+    public void throw_an_error_when_server_is_unavailable() {
+        when(inMemoryUserRepository.get(new Username("username"))).thenThrow(new RuntimeException());
+
+        ResponseEntity<Object> user = userSessionController.userInfoGet("username", "token");
+
+        Assert.assertEquals(HttpStatus.SERVICE_UNAVAILABLE, user.getStatusCode());
+    }
 }
