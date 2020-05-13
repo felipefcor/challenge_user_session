@@ -10,4 +10,10 @@ public class PasswordShould {
     public void throw_an_exception_when_the_password_is_too_long() {
         Assertions.assertThrows(PasswordNotValidException.class, () -> new Password("este password no es correcto ya que es muy largo"));
     }
+
+    @Test
+    public void throw_an_exception_when_the_password_is_too_short() {
+        Assertions.assertThrows(PasswordNotValidException.class, () -> new Password("pass"));
+    }
+
 }
