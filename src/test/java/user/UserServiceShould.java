@@ -1,21 +1,34 @@
 package user;
 
+import com.kubikdata.domain.IUserRepository;
+import com.kubikdata.domain.User;
+import com.kubikdata.domain.UserService;
+import com.kubikdata.domain.valueObjects.UserId;
+import com.kubikdata.domain.valueObjects.UserToken;
+import com.kubikdata.domain.valueObjects.Username;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.time.LocalDate;
+
+import static org.mockito.Mockito.verify;
+
+
 public class UserServiceShould {
-/*   @Mock UserRepository userRepository;
+   @Mock IUserRepository userRepository;
 
    @Test
-   public void test(){
+   public void send_user_with_token_to_repository(){
       MockitoAnnotations.initMocks(this);
-      UserCatalog userCatalog = new UserCatalog();
       Username username = new Username("myUsername");
       UserId userId = new UserId(1);
-      User userTest = new User(userId, username, new UserToken("usertoken"), LocalDate.now());
-      userCatalog.add(userId, userTest);
       UserService userService = new UserService(userRepository);
 
-      userService.createSession(username);
+      UserToken userToken = userService.createSession(username);
 
-      verify(userRepository).save(userCatalog);
-   }*/
+      verify(userRepository).add(userId, new User(userId, username, userToken, LocalDate.now()));
+   }
 
 }

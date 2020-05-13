@@ -1,6 +1,6 @@
 package com.kubikdata.controller.response;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * This object will encapsulate required fields to know user , token and date.
@@ -9,9 +9,9 @@ public class UserResponse {
 
     private String username;
     private String token;
-    private Date date;
+    private LocalDate date;
 
-    public UserResponse(String username, String token, Date date) {
+    public UserResponse(String username, String token, LocalDate date) {
         this.username = username;
         this.token = token;
         this.date = date;
@@ -25,7 +25,7 @@ public class UserResponse {
         return token;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 }

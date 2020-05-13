@@ -1,10 +1,11 @@
 package com.kubikdata.domain;
 
+import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.valueObjects.UserId;
 
 import java.util.HashMap;
 
-public class UserRepository {
+public class UserRepository implements IUserRepository{
 
     private HashMap<UserId, User> userCatalog = new HashMap<>();
 
@@ -12,8 +13,11 @@ public class UserRepository {
         userCatalog.put(userId, user);
     }
 
-    public User get(UserId userId) {
-        if(userCatalog.containsKey(userId)) return userCatalog.get(userId);
+    public UserResponse get(UserId userId) {
+        if(userCatalog.containsKey(userId)){
+            User user = userCatalog.get(userId);
+            return user.createUserResponse();
+        }
         return null;
     }
 }
