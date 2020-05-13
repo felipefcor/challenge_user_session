@@ -20,8 +20,7 @@ public class UserCatalogShould {
         User userTest = new User(userId, username, new UserToken("usertoken"), LocalDate.now());
 
         userCatalog.add(userId, userTest);
-        User user = userCatalog.get(userId);
 
-        Assert.assertTrue( user.hasTheSameUsername(username));
+        Assert.assertEquals(userTest, userCatalog.get(userId));
     }
 }

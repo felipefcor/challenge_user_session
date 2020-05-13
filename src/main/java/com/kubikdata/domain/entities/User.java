@@ -19,9 +19,4 @@ public class User {
         this.date = date;
     }
 
-
-    public boolean hasTheSameUsername(Username newUsername) {
-        if(username.getUsername().equals(newUsername.getUsername())) return true;
-        return false;
-    }
 }
