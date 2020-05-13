@@ -1,6 +1,6 @@
 package security;
 
-import com.kubikdata.domain.entities.UserSecurity;
+import com.kubikdata.domain.UserSecurity;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import org.junit.Assert;

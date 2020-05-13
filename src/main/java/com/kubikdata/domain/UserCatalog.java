@@ -1,6 +1,5 @@
 package com.kubikdata.domain;
 
-import com.kubikdata.domain.entities.User;
 import com.kubikdata.domain.valueObjects.UserId;
 
 import java.util.HashMap;

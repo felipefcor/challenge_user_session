@@ -1,7 +1,7 @@
 package user;
 
 import com.kubikdata.domain.UserCatalog;
-import com.kubikdata.domain.entities.User;
+import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;

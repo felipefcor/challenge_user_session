@@ -1,4 +1,4 @@
-package com.kubikdata.domain.entities;
+package com.kubikdata.domain;
 
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
