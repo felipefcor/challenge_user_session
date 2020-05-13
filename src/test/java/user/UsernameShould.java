@@ -1,4 +1,4 @@
-package userSession;
+package user;
 
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.domain.valueObjects.UsernameNotValidException;
