@@ -61,7 +61,7 @@ public class UserControllerShould {
     }
 
     @Test
-    public void throw_an_error_when_server_is_unavailable() {
+    public void throw_an_error_when_server_is_unavailable_and_trying_to_retrieve_user_info() {
         when(inMemoryUserRepository.get(new Username("username"))).thenThrow(new RuntimeException());
 
         ResponseEntity<Object> user = userSessionController.userInfoGet("username", "token");
