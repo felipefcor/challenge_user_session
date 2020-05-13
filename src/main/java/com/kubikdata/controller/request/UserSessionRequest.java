@@ -3,6 +3,7 @@ package com.kubikdata.controller.request;
 public class UserSessionRequest {
 
     private String username;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -13,5 +14,11 @@ public class UserSessionRequest {
     }
 
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

@@ -2,6 +2,9 @@ package com.kubikdata.controller;
 
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.domain.User;
+import com.kubikdata.domain.valueObjects.UserId;
+import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import org.junit.Assert;
@@ -28,10 +31,12 @@ public class UserControllerShould {
     public void setup() {
         MockitoAnnotations.initMocks(this);
     }
+
     @Test
-    public void create_user_session_token(){
+    public void create_user_session_token() {
         UserSessionRequest userSessionRequest = new UserSessionRequest();
         userSessionRequest.setUsername("username");
+        userSessionRequest.setPassword("password");
 
         ResponseEntity<Object> response = userSessionController.addSession(userSessionRequest);
 
@@ -40,8 +45,8 @@ public class UserControllerShould {
     }
 
     @Test
-    public void get_user_response_from_username(){
-        when(inMemoryUserRepository.get(new Username("username"))).thenReturn(new UserResponse("username","token", LocalDate.now()));
+    public void get_user_response_from_username() {
+        when(inMemoryUserRepository.get(new Username("username"))).thenReturn(new UserResponse("username", "token", LocalDate.now()));
 
         ResponseEntity<Object> user = userSessionController.userInfoGet("username", "token");
 
@@ -68,4 +73,5 @@ public class UserControllerShould {
 
         Assert.assertEquals(HttpStatus.SERVICE_UNAVAILABLE, user.getStatusCode());
     }
+
 }

@@ -1,5 +1,6 @@
 package acceptance;
 
+import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -15,8 +16,9 @@ public class Userfeature {
     public void create_a_user_with_a_token_and_return_a_user_response(){
         MockitoAnnotations.initMocks(this);
         Username username = new Username("myUsername");
+        Password password = new Password("password");
         UserService userService = new UserService(inMemoryUserRepository);
-        UserToken userToken = userService.createSession(username);
+        UserToken userToken = userService.createSession(username, password);
 
         Assert.assertEquals("myUsername", userService.get(username, userToken).getUsername());
         Assert.assertEquals(userToken.toString(), userService.get(username, userToken).getToken());

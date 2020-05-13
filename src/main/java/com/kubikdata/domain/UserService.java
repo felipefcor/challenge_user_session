@@ -1,11 +1,11 @@
 package com.kubikdata.domain;
 
 import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
-import com.kubikdata.infrastructure.UserRepositoryInterface;
 
 import java.time.LocalDate;
 
@@ -17,7 +17,7 @@ public class UserService {
         this.inMemoryUserRepository = inMemoryUserRepository;
     }
 
-    public UserToken createSession(Username username) {
+    public UserToken createSession(Username username, Password password) {
         UserSecurity userSecurity = new UserSecurity();
         UserToken userToken = userSecurity.createJWTToken(username);
         UserId userId = new UserId(1);

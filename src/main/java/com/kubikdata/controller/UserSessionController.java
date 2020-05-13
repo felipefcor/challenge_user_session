@@ -2,15 +2,17 @@ package com.kubikdata.controller;
 
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.domain.UserService;
+import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 import com.kubikdata.domain.valueObjects.UsernameNotValidException;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
-import com.kubikdata.infrastructure.UserRepositoryInterface;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @RestController
 public class UserSessionController {
@@ -28,8 +30,10 @@ public class UserSessionController {
         HttpHeaders httpHeaders = new HttpHeaders();
 
         try {
-            String token = userService.createSession(new Username(userSessionRequest.getUsername())).toString();
+            String token = userService.createSession(new Username(userSessionRequest.getUsername()), new Password(userSessionRequest.getPassword())).toString();
             httpHeaders.add("Authorization", token);
+
+
             return new ResponseEntity<>("user token created succesfully", httpHeaders, HttpStatus.CREATED);
         } catch (UsernameNotValidException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
