@@ -1,6 +1,6 @@
 package user;
 
-import com.kubikdata.domain.UserCatalog;
+import com.kubikdata.domain.UserRepository;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -10,17 +10,17 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 
-public class UserCatalogShould {
+public class UserRepositoryShould {
 
     @Test
     public void add_and_get_users_to_catalog(){
-        UserCatalog userCatalog = new UserCatalog();
+        UserRepository userRepository = new UserRepository();
         Username username = new Username("myUsername");
         UserId userId = new UserId(1);
         User userTest = new User(userId, username, new UserToken("usertoken"), LocalDate.now());
 
-        userCatalog.add(userId, userTest);
+        userRepository.add(userId, userTest);
 
-        Assert.assertEquals(userTest, userCatalog.get(userId));
+        Assert.assertEquals(userTest, userRepository.get(userId));
     }
 }
