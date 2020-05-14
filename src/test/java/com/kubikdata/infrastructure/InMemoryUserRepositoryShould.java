@@ -1,6 +1,5 @@
 package com.kubikdata.infrastructure;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -17,10 +16,9 @@ public class InMemoryUserRepositoryShould {
         InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
         Username username = new Username("myUsername");
         User userTest = new User(new UserId(1), username, new UserToken("usertoken"), LocalDate.now());
-        UserResponse userResponse = userTest.createUserResponse();
 
         inMemoryUserRepository.add(username, userTest);
 
-        Assert.assertEquals(userResponse, inMemoryUserRepository.get(username));
+        Assert.assertEquals(userTest, inMemoryUserRepository.get(username));
     }
 }

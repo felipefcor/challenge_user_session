@@ -28,9 +28,9 @@ public class UserService {
     }
 
     public UserResponse get(Username username, UserToken userToken) {
-        UserResponse user = inMemoryUserRepository.get(username);
-        if (user != null && user.getToken().equals(userToken.toString())) {
-            return user;
+        User user = inMemoryUserRepository.get(username);
+        if (user != null && user.createUserResponse().getToken().equals(userToken.toString())) {
+            return user.createUserResponse();
         }
         return null;
     }

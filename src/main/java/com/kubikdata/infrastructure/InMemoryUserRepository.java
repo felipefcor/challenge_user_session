@@ -1,6 +1,5 @@
 package com.kubikdata.infrastructure;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.Username;
 
@@ -14,10 +13,10 @@ public class InMemoryUserRepository implements UserRepositoryInterface {
         userCatalog.put(username, user);
     }
 
-    public UserResponse get(Username username) {
+    public User get(Username username) {
         if(userCatalog.containsKey(username)){
             User user = userCatalog.get(username);
-            return user.createUserResponse();
+            return user;
         }
         return null;
     }
