@@ -4,7 +4,6 @@ import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.*;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
