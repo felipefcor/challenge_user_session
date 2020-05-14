@@ -1,5 +1,6 @@
 package acceptance;
 
+import com.kubikdata.controller.response.UserTokenResponse;
 import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.domain.UserService;
@@ -18,7 +19,9 @@ public class Userfeature {
         Username username = new Username("myUsername");
         Password password = new Password("password");
         UserService userService = new UserService(inMemoryUserRepository);
-        UserToken userToken = userService.createSession(username, password);
+        UserTokenResponse userTokenResponse = userService.createSession(username, password);
+        UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
+
 
         Assert.assertEquals("myUsername", userService.get(username, userToken).getUsername());
         Assert.assertEquals(userToken.toString(), userService.get(username, userToken).getToken());

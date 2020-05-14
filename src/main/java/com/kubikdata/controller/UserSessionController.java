@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserSessionController {
 
     private InMemoryUserRepository inMemoryUserRepository = new InMemoryUserRepository();
@@ -29,9 +30,8 @@ public class UserSessionController {
         try {
             String token = userService.createSession(new Username(userSessionRequest.getUsername()), new Password(userSessionRequest.getPassword())).toString();
             httpHeaders.add("Authorization", token);
+            return new ResponseEntity("user token created succesfully", httpHeaders, HttpStatus.CREATED);
 
-
-            return new ResponseEntity<>("user token created succesfully", httpHeaders, HttpStatus.CREATED);
         } catch (UsernameNotValidException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (PasswordNotValidException exception) {

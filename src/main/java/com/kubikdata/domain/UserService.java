@@ -1,6 +1,7 @@
 package com.kubikdata.domain;
 
 import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.controller.response.UserTokenResponse;
 import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -17,13 +18,13 @@ public class UserService {
         this.inMemoryUserRepository = inMemoryUserRepository;
     }
 
-    public UserToken createSession(Username username, Password password) {
+    public UserTokenResponse createSession(Username username, Password password) {
         UserSecurity userSecurity = new UserSecurity();
         UserToken userToken = userSecurity.createJWTToken(username);
         UserId userId = new UserId(1);
         User user = new User(userId, username, userToken, LocalDate.now());
         inMemoryUserRepository.add(username, user);
-        return userToken;
+        return userToken.createUserTokenResponse();
     }
 
     public UserResponse get(Username username, UserToken userToken) {

@@ -1,13 +1,27 @@
 package com.kubikdata.domain.valueObjects;
 
+import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.controller.response.UserTokenResponse;
+
 import java.util.Objects;
 
 public class UserToken {
-    private String token;
+    public String token;
 
     public UserToken(String token) {
         this.token = token;
     }
+
+    public UserTokenResponse createUserTokenResponse(){
+        UserTokenResponse userTokenResponse = new UserTokenResponse(this.token);
+        return userTokenResponse;
+    }
+
+    public static UserToken createFromUserTokenResponse(UserTokenResponse userTokenResponse){
+        UserToken userToken = new UserToken(userTokenResponse.token);
+        return userToken;
+    }
+
 
     @Override
     public String toString() {

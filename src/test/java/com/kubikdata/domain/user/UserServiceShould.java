@@ -1,5 +1,6 @@
 package com.kubikdata.domain.user;
 
+import com.kubikdata.controller.response.UserTokenResponse;
 import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.domain.User;
@@ -29,7 +30,8 @@ public class UserServiceShould {
       UserId userId = new UserId(1);
       UserService userService = new UserService(userRepository);
 
-      UserToken userToken = userService.createSession(username, password);
+      UserTokenResponse userTokenResponse = userService.createSession(username, password);
+      UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
 
       verify(userRepository).add(username, new User(userId, username, userToken, LocalDate.now()));
    }
