@@ -30,7 +30,7 @@ public class UserServiceShould {
       UserId userId = new UserId(1);
       UserService userService = new UserService(userRepository);
 
-      UserTokenResponse userTokenResponse = userService.createSession(username, password);
+      UserTokenResponse userTokenResponse = userService.createUserSession(username, password);
       UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
 
       verify(userRepository).add(username, new User(userId, username, userToken, LocalDate.now()));

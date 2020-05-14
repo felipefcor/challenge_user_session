@@ -19,11 +19,11 @@ public class Userfeature {
         Username username = new Username("myUsername");
         Password password = new Password("password");
         UserService userService = new UserService(inMemoryUserRepository);
-        UserTokenResponse userTokenResponse = userService.createSession(username, password);
+        UserTokenResponse userTokenResponse = userService.createUserSession(username, password);
         UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
 
 
-        Assert.assertEquals("myUsername", userService.get(username, userToken).getUsername());
-        Assert.assertEquals(userToken.toString(), userService.get(username, userToken).getToken());
+        Assert.assertEquals("myUsername", userService.getLoggedUser(username, userToken).getUsername());
+        Assert.assertEquals(userToken.toString(), userService.getLoggedUser(username, userToken).getToken());
     }
 }

@@ -6,32 +6,32 @@ import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
-import com.kubikdata.infrastructure.InMemoryUserRepository;
+import com.kubikdata.infrastructure.UserRepositoryInterface;
 
 import java.time.LocalDate;
 
 public class UserService {
 
-    private final InMemoryUserRepository inMemoryUserRepository;
+    private final UserRepositoryInterface userRepository;
 
-    public UserService(InMemoryUserRepository inMemoryUserRepository) {
-        this.inMemoryUserRepository = inMemoryUserRepository;
+    public UserService(UserRepositoryInterface userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public UserTokenResponse createSession(Username username, Password password) {
+    public UserTokenResponse createUserSession(Username username, Password password) {
         UserSecurity userSecurity = new UserSecurity();
-        UserToken userToken = userSecurity.createJWTToken(username);
+        UserToken userToken = userSecurity.generateToken(username);
         UserId userId = new UserId(1);
         User user = new User(userId, username, userToken, LocalDate.now());
-        inMemoryUserRepository.add(username, user);
+        userRepository.add(username, user);
         return userToken.createUserTokenResponse();
     }
 
-    public UserResponse get(Username username, UserToken userToken) {
-        User user = inMemoryUserRepository.get(username);
-        if (user != null && user.createUserResponse().getToken().equals(userToken.toString())) {
-            return user.createUserResponse();
-        }
-        return null;
+    public UserResponse getLoggedUser(Username username, UserToken userToken) {
+        User user = userRepository.get(username);
+        if (user == null) return null;
+        return user.checkToken(userToken).createUserResponse();
+
     }
+
 }

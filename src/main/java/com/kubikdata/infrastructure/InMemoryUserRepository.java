@@ -7,17 +7,14 @@ import java.util.HashMap;
 
 public class InMemoryUserRepository implements UserRepositoryInterface {
 
-    private HashMap<Username, User> userCatalog = new HashMap<>();
+    private HashMap<Username, User> users = new HashMap<>();
 
     public void add(Username username, User user) {
-        userCatalog.put(username, user);
+        users.put(username, user);
     }
 
     public User get(Username username) {
-        if(userCatalog.containsKey(username)){
-            User user = userCatalog.get(username);
-            return user;
-        }
+        if(users.containsKey(username)) return users.get(username);
         return null;
     }
 }

@@ -13,7 +13,7 @@ public class UserSecurity {
 
     Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public UserToken createJWTToken(Username username) {
+    public UserToken generateToken(Username username) {
          String token = Jwts
                 .builder()
                 .setSubject(username.getUsername())

@@ -14,7 +14,7 @@ public class UserSecurityShould {
     public void create_correctly_a_user_token(){
         UserSecurity userSecurity = new UserSecurity();
         Username username = new Username("username");
-        UserToken userToken = userSecurity.createJWTToken(username);
+        UserToken userToken = userSecurity.generateToken(username);
         String token = userToken.toString();
 
         String jwts = Jwts.parserBuilder().setSigningKey(userSecurity.getKey()).build().parseClaimsJws(token).getBody().getSubject();

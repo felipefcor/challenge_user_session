@@ -21,6 +21,11 @@ public class User {
         this.date = date;
     }
 
+    public User checkToken(UserToken userToken) {
+        if (!this.token.equals(userToken)) throw new IncorrectTokenException();
+         return this;
+    }
+
     public UserResponse createUserResponse() {
         UserResponse userResponse = new UserResponse(this.username.getUsername(), this.token.toString(), this.date);
         return userResponse;
@@ -51,4 +56,6 @@ public class User {
                 ", date=" + date +
                 '}';
     }
+
+
 }
