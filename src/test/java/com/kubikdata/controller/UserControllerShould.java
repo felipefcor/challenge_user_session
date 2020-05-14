@@ -41,7 +41,6 @@ public class UserControllerShould {
         ResponseEntity<Object> response = userSessionController.addSession(userSessionRequest);
 
         Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        Assert.assertEquals("user token created succesfully", response.getBody());
     }
 
     @Test

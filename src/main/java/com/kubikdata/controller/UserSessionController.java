@@ -25,13 +25,8 @@ public class UserSessionController {
     @PostMapping(value = "/session")
     public ResponseEntity<Object> addSession(@RequestBody UserSessionRequest userSessionRequest) {
         UserService userService = new UserService(inMemoryUserRepository);
-        HttpHeaders httpHeaders = new HttpHeaders();
-
         try {
-            String token = userService.createSession(new Username(userSessionRequest.getUsername()), new Password(userSessionRequest.getPassword())).toString();
-            httpHeaders.add("Authorization", token);
-            return new ResponseEntity("user token created succesfully", httpHeaders, HttpStatus.CREATED);
-
+            return new ResponseEntity<>(userService.createSession(new Username(userSessionRequest.getUsername()), new Password(userSessionRequest.getPassword())), HttpStatus.CREATED);
         } catch (UsernameNotValidException exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (PasswordNotValidException exception) {
