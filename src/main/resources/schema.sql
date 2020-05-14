@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS users (
+    userId INT NOT NULL,
+    date VARCHAR(250) NOT NULL
+    );
