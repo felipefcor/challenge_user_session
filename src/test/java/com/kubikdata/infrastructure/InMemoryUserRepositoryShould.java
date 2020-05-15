@@ -1,5 +1,6 @@
 package com.kubikdata.infrastructure;
 
+import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;

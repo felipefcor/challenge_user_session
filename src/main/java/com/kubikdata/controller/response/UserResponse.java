@@ -1,6 +1,9 @@
 package com.kubikdata.controller.response;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -8,11 +11,11 @@ import java.util.Objects;
  */
 public class UserResponse {
 
-    private String username;
-    private String token;
-    private LocalDate date;
+    public String username;
+    public String token;
+    public Timestamp date;
 
-    public UserResponse(String username, String token, LocalDate date) {
+    public UserResponse(String username, String token, Timestamp date) {
         this.username = username;
         this.token = token;
         this.date = date;
@@ -26,7 +29,7 @@ public class UserResponse {
         return token;
     }
 
-    public LocalDate getDate() {
+    public Timestamp getDate() {
         return date;
     }
 

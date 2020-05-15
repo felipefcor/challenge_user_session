@@ -1,10 +1,13 @@
 package com.kubikdata.infrastructure;
 
+import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.Username;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
+@Component
 public class InMemoryUserRepository implements UserRepositoryInterface {
 
     private HashMap<Username, User> users = new HashMap<>();

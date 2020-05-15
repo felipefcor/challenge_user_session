@@ -3,8 +3,8 @@ package com.kubikdata.controller;
 import com.kubikdata.controller.request.UserSessionRequest;
 import com.kubikdata.domain.UserService;
 import com.kubikdata.domain.valueObjects.*;
-import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.infrastructure.UserRepositoryInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserSessionController {
 
-    private UserRepositoryInterface userRepository = new InMemoryUserRepository();
+    private UserRepositoryInterface sqlUserRepository;
     /**
      * this endpoint is needed to add a sesssion id to a specific username
      *
@@ -24,7 +24,7 @@ public class UserSessionController {
      */
     @PostMapping(value = "/session")
     public ResponseEntity<Object> addSession(@RequestBody UserSessionRequest userSessionRequest) {
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(sqlUserRepository);
         try {
             return new ResponseEntity<>(userService.createUserSession(new Username(userSessionRequest.getUsername()), new Password(userSessionRequest.getPassword())), HttpStatus.CREATED);
         } catch (UsernameNotValidException exception) {
@@ -37,7 +37,7 @@ public class UserSessionController {
     }
     @GetMapping(value = "/info/{username}/{token}")
     public ResponseEntity<Object> userInfoGet(@PathVariable String username, @PathVariable String token) {
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(sqlUserRepository);
         try {
             return new ResponseEntity<>(userService.getLoggedUser(new Username(username),new UserToken(token)), HttpStatus.OK);
         } catch (RuntimeException exception) {

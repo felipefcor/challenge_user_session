@@ -5,13 +5,16 @@ import com.kubikdata.domain.valueObjects.IncorrectTokenException;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class User {
-    private final Username username;
-    private final UserToken token;
-    private final LocalDate date;
+    private  Username username;
+    private  UserToken token;
+    private  LocalDate date;
 
     public User(Username username, UserToken token, LocalDate date) {
         this.username = username;
@@ -25,7 +28,8 @@ public class User {
     }
 
     public UserResponse createUserResponse() {
-        UserResponse userResponse = new UserResponse(this.username.getUsername(), this.token.toString(), this.date);
+        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.of(this.date, LocalTime.MIDNIGHT));
+        UserResponse userResponse = new UserResponse(this.username.getUsername(), this.token.toString(),timestamp);
         return userResponse;
     }
 

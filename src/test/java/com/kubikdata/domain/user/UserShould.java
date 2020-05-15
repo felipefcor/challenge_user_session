@@ -9,7 +9,10 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class UserShould {
     User user = new User(
@@ -33,7 +36,8 @@ public class UserShould {
 
     @Test
     public void create_a_user_response_from_itself(){
-        UserResponse userResponse = new UserResponse("username", "token", LocalDate.now());
+        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT));
+        UserResponse userResponse = new UserResponse("username", "token", timestamp);
 
         UserResponse userResponseTest = user.createUserResponse();
 

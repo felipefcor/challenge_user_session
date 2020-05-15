@@ -29,7 +29,6 @@ public class UserService {
         User user = userRepository.get(username);
         if (user == null) return null;
         return user.checkToken(userToken).createUserResponse();
-
     }
 
 }
