@@ -1,6 +1,7 @@
 package com.kubikdata.domain;
 
 import com.kubikdata.controller.response.UserResponse;
+import com.kubikdata.domain.valueObjects.IncorrectTokenException;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
