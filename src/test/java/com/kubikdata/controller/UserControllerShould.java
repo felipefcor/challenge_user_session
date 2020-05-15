@@ -75,7 +75,7 @@ public class UserControllerShould {
     public void throw_an_error_if_password_is_not_valid() {
         UserSessionRequest userSessionRequest = new UserSessionRequest();
         userSessionRequest.setUsername("username");
-        userSessionRequest.setPassword("user");
+        userSessionRequest.setPassword("u");
 
         ResponseEntity<Object> response = userSessionController.addSession(userSessionRequest);
 

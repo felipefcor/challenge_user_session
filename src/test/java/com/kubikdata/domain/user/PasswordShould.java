@@ -13,7 +13,7 @@ public class PasswordShould {
 
     @Test
     public void throw_an_exception_when_the_password_is_too_short() {
-        Assertions.assertThrows(PasswordNotValidException.class, () -> new Password("pass"));
+        Assertions.assertThrows(PasswordNotValidException.class, () -> new Password("p"));
     }
 
 }
