@@ -1,7 +1,6 @@
 package com.kubikdata.domain;
 
 import com.kubikdata.controller.response.UserResponse;
-import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
@@ -9,13 +8,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class User {
-    private final UserId userID;
     private final Username username;
     private final UserToken token;
     private final LocalDate date;
 
-    public User(UserId userID, Username username, UserToken token, LocalDate date) {
-        this.userID = userID;
+    public User(Username username, UserToken token, LocalDate date) {
         this.username = username;
         this.token = token;
         this.date = date;
@@ -36,26 +33,22 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userID, user.userID) &&
-                Objects.equals(username, user.username) &&
+        return Objects.equals(username, user.username) &&
                 Objects.equals(token, user.token) &&
                 Objects.equals(date, user.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userID, username, token, date);
+        return Objects.hash(username, token, date);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userID=" + userID +
-                ", username=" + username +
+                "username=" + username +
                 ", token=" + token +
                 ", date=" + date +
                 '}';
     }
-
-
 }

@@ -5,7 +5,6 @@ import com.kubikdata.domain.valueObjects.Password;
 import com.kubikdata.infrastructure.InMemoryUserRepository;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.UserService;
-import com.kubikdata.domain.valueObjects.UserId;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
 
@@ -27,12 +26,11 @@ public class UserServiceShould {
       MockitoAnnotations.initMocks(this);
       Username username = new Username("myUsername");
       Password password = new Password("password");
-      UserId userId = new UserId(1);
       UserService userService = new UserService(userRepository);
 
       UserTokenResponse userTokenResponse = userService.createUserSession(username, password);
       UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
 
-      verify(userRepository).add(username, new User(userId, username, userToken, LocalDate.now()));
+      verify(userRepository).add(username, new User(username, userToken, LocalDate.now()));
    }
 }
