@@ -1,6 +1,5 @@
 package com.kubikdata.domain.user;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.controller.response.UserTokenResponse;
 import com.kubikdata.domain.valueObjects.UserToken;
 import org.junit.Assert;

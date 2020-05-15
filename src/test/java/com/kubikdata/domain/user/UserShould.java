@@ -5,7 +5,6 @@ import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.IncorrectTokenException;
 import com.kubikdata.domain.valueObjects.UserToken;
 import com.kubikdata.domain.valueObjects.Username;
-import com.kubikdata.domain.valueObjects.UsernameNotValidException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

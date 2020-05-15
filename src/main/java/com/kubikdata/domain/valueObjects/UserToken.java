@@ -1,6 +1,5 @@
 package com.kubikdata.domain.valueObjects;
 
-import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.controller.response.UserTokenResponse;
 
 import java.util.Objects;
