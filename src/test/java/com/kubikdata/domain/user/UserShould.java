@@ -1,5 +1,6 @@
 package com.kubikdata.domain.user;
 
+import com.kubikdata.controller.response.UserResponse;
 import com.kubikdata.domain.User;
 import com.kubikdata.domain.valueObjects.IncorrectTokenException;
 import com.kubikdata.domain.valueObjects.UserToken;
@@ -29,5 +30,14 @@ public class UserShould {
         UserToken userToken = new UserToken("wrongToken");
 
         Assertions.assertThrows(IncorrectTokenException.class, () -> user.checkToken(userToken));
+    }
+
+    @Test
+    public void create_a_user_response_from_itself(){
+        UserResponse userResponse = new UserResponse("username", "token", LocalDate.now());
+
+        UserResponse userResponseTest = user.createUserResponse();
+
+        Assert.assertEquals(userResponse.getUsername(), userResponseTest.getUsername());
     }
 }
