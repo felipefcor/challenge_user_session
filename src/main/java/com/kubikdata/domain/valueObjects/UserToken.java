@@ -6,7 +6,7 @@ import com.kubikdata.controller.response.UserTokenResponse;
 import java.util.Objects;
 
 public class UserToken {
-    public String token;
+    private String token;
 
     public UserToken(String token) {
         this.token = token;

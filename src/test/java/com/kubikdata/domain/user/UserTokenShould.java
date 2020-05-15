@@ -17,4 +17,13 @@ public class UserTokenShould {
 
         Assert.assertEquals("token", userTokenResponse.token);
     }
+
+    @Test
+    public void create_a_user_token_from_user_token_response(){
+        UserTokenResponse userTokenResponse = new UserTokenResponse("token");
+
+        UserToken userToken = UserToken.createFromUserTokenResponse(userTokenResponse);
+
+        Assert.assertEquals("token", userToken.toString());
+    }
 }
